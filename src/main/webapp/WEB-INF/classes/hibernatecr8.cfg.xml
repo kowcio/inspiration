@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+
+        
+        <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC
         "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
-   
+        
+        
         
 <hibernate-configuration><!--  no name attribute deletes the invalid JNDI name error -->
     <session-factory>
@@ -18,7 +21,7 @@
         <property name="hibernate.use_sql_comments">true</property>
         <property name="hibernate.query.startup_check">false</property>
         <property name="current_session_context_class">thread</property>
-        <property name="hibernate.hbm2ddl.auto">update</property> 
+        <property name="hibernate.hbm2ddl.auto">create</property> 
     </session-factory>
 </hibernate-configuration>
         
@@ -41,7 +44,7 @@
         <property name="hibernate.use_sql_comments">true</property>
         <property name="hibernate.query.startup_check">false</property>
         <property name="current_session_context_class">thread</property>
-        <property name="hibernate.hbm2ddl.auto">update</property> 
+        <property name="hibernate.hbm2ddl.auto">create</property> 
   </session-factory>
 </hibernate-configuration>
 
