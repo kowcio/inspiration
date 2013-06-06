@@ -67,25 +67,15 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>
         /WEB-INF/mvc-dispatcher-servlet.xml,
+        </param-value>
+<!-- 
         /WEB-INF/ss-datasource.xml,
         /WEB-INF/spring-security.xml
-        </param-value>
-        
+ -->        
         
     </context-param>
- 
- <!-- 
- http://www.h2database.com/html/tutorial.html
- Using a Servlet Listener to Start and Stop a Database
-Add the h2*.jar file to your web application, and add the following snippet to your web.xml file
- (between the context-param and the filter section): 
-*database should be created automaticaly. 
- -->
-<context-param>
+ <context-param>
     <param-name>db.url</param-name>
-<!--     
-Add option for creating database ;INIT=create schema if not exists test\;runscript from 'classpath:sql/db-schema.sql';DB_CLOSE_DELAY=-1</param-value>
- -->
 <param-value>jdbc:h2:blogdb;AUTO_SERVER=TRUE;MVCC=TRUE;DB_CLOSE_DELAY=-1;IFEXISTS=FALSE</param-value>
 </context-param>
 <context-param>
@@ -148,7 +138,7 @@ Add option for creating database ;INIT=create schema if not exists test\;runscri
   
   
   
-    <!-- SPRING SECURITY -->
+  <!--    SPRING SECURITY 
     
     <filter>
         <filter-name>springSecurityFilterChain</filter-name>
@@ -160,7 +150,7 @@ Add option for creating database ;INIT=create schema if not exists test\;runscri
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    
+     -->
     
     
     
