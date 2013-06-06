@@ -69,13 +69,13 @@
 </error-page>
 
   -->
-  <!-- 
+  
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
         /WEB-INF/mvc-dispatcher-servlet.xml        
         </param-value>
-
+<!-- 
         /WEB-INF/ss-datasource.xml,
         /WEB-INF/spring-security.xml
  -->        
