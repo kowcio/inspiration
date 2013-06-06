@@ -76,6 +76,7 @@
     </context-param>
  <context-param>
     <param-name>db.url</param-name>
+
 <param-value>jdbc:h2:blogdb;AUTO_SERVER=TRUE;MVCC=TRUE;DB_CLOSE_DELAY=-1;IFEXISTS=FALSE</param-value>
 </context-param>
 <context-param>
@@ -138,7 +139,7 @@
   
   
   
-  <!--    SPRING SECURITY 
+    <!-- SPRING SECURITY -->
     
     <filter>
         <filter-name>springSecurityFilterChain</filter-name>
@@ -150,7 +151,7 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-     -->
+    
     
     
     
