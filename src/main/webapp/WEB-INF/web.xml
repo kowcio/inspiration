@@ -7,5 +7,165 @@
          metadata-complete="false">
 
          
-</web-app>
+ <display-name>Blog</display-name>
+  
+  
+  
+  
+  <display-name>Spring MVC Application</display-name>
+ 
+    <servlet>
+        <servlet-name>mvc-dispatcher</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet
+                </servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+ 
+    <servlet-mapping>
+        <servlet-name>mvc-dispatcher</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    <!-- 
+    I have had issues before with tomcat not serving static content with a /* servlet mapping. 
+    The way I solved it was to explicitly map each content type in web.xml, including .css files, like so: 
+    
+    Mapping other files then *.jsp
+    -->
+    <servlet-mapping>
+  <servlet-name>default</servlet-name>
+  <url-pattern>*.css</url-pattern>  
+</servlet-mapping>
 
+    <servlet-mapping>
+  <servlet-name>default</servlet-name>
+  <url-pattern>*.js</url-pattern>  
+</servlet-mapping>
+
+
+    <servlet-mapping>
+  <servlet-name>default</servlet-name>
+  <url-pattern>*.jpg</url-pattern>  
+</servlet-mapping>
+
+<!--  turned off for efficient error reading
+<error-page>
+    <error-code>404</error-code>
+    <location>/errors/404.jsp</location>
+</error-page>
+<error-page>
+    <error-code>403</error-code>
+    <location>/errors/403.jsp</location>
+</error-page>
+<error-page>
+    <error-code>500</error-code>
+    <location>/errors/500.jsp</location>
+</error-page>
+
+  -->
+  
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+        /WEB-INF/mvc-dispatcher-servlet.xml,
+        /WEB-INF/ss-datasource.xml,
+        /WEB-INF/spring-security.xml
+        </param-value>
+        
+        
+    </context-param>
+ 
+ <!-- 
+ http://www.h2database.com/html/tutorial.html
+ Using a Servlet Listener to Start and Stop a Database
+Add the h2*.jar file to your web application, and add the following snippet to your web.xml file
+ (between the context-param and the filter section): 
+*database should be created automaticaly. 
+ -->
+<context-param>
+    <param-name>db.url</param-name>
+<!--     
+Add option for creating database ;INIT=create schema if not exists test\;runscript from 'classpath:sql/db-schema.sql';DB_CLOSE_DELAY=-1</param-value>
+ -->
+<param-value>jdbc:h2:blogdb;AUTO_SERVER=TRUE;MVCC=TRUE;DB_CLOSE_DELAY=-1;IFEXISTS=FALSE</param-value>
+</context-param>
+<context-param>
+    <param-name>db.user</param-name>
+    <param-value>sa</param-value>
+</context-param>
+<context-param>
+    <param-name>db.password</param-name>
+    <param-value></param-value>
+</context-param>
+ <listener>
+    <listener-class>org.h2.server.web.DbStarter</listener-class>
+</listener>
+
+
+
+<!--  CONTEXT LOADER LISTENER -->
+
+<listener>
+        <listener-class>
+                      org.springframework.web.context.ContextLoaderListener
+                </listener-class>
+    </listener>
+
+  
+  
+  <!--  SERVLET FOR CONSOLE  H2 -->
+  
+  
+  <servlet>
+    <servlet-name>H2Console</servlet-name>
+    <servlet-class>org.h2.server.web.WebServlet</servlet-class>
+    <!--
+    <init-param>
+        <param-name>webAllowOthers</param-name>
+        <param-value></param-value>
+    </init-param>
+    <init-param>
+        <param-name>trace</param-name>
+        <param-value></param-value>
+    </init-param>
+    -->
+    <load-on-startup>1</load-on-startup>
+</servlet>
+<servlet-mapping>
+    <servlet-name>H2Console</servlet-name>
+    <url-pattern>/console/*</url-pattern>
+</servlet-mapping>
+  
+  <!--  WELCOME LIST -->
+  
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  
+  
+    <!-- SPRING SECURITY -->
+    
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    
+    
+    
+    
+    
+    
+    
+    
+</web-app>
