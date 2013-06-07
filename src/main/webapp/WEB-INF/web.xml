@@ -81,7 +81,11 @@
                       org.springframework.web.context.ContextLoaderListener
                 </listener-class>
     </listener>
-
+  <listener>
+    <listener-class>
+                        inspire.config.DBConfig
+</listener-class>
+  </listener>
   
   
     <!-- SPRING SECURITY
