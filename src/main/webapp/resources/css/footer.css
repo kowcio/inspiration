@@ -3,10 +3,22 @@
 
 
 #footer{
-	margin-top:5%;
+	position:relative;
+    bottom:0%;
+    height:4%;
+	margin-top:2%;
+	
+	border:1px solid black;
 }
 
-#help_grow_div{
-	display:none;
-	
-}
+
+
+
+
+
+
+
+
+
+
+

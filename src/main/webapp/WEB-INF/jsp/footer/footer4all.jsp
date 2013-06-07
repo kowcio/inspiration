@@ -9,15 +9,7 @@
 <!-- FOOTER -->
 
 
-
-    <div id="footer">
       <div class="container">
         <p class="muted credit">Example courtesy <a href="http://martinbean.co.uk">Martin Bean</a> and <a href="http://ryanfait.com/sticky-footer/">Ryan Fait</a>.</p>
       </div>
-    </div>
-    
-    
-<!--  help divs with html include -->
- <jsp:include page="/WEB-INF/jsp/main/popover_help.jsp"></jsp:include>
-
     
