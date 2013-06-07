@@ -29,8 +29,58 @@ public class Motivator {
 	
 	//GetLabel by Hibernate
 
+	
+	/**
+	 * Constructor
+	 */
+	public Motivator() {
+		this.url = 		"url";
+		this.user =		"user"; 
+		this.displayed = 1;
+		this.linkType = "linkType";
+	}
+	
+	
+	
+	
+	/**
+	 * Full construcotr
+	 * @param id
+	 * @param url
+	 * @param user
+	 * @param displayed
+	 * @param linkType
+	 */
+	public Motivator(int id, String url, String user, int displayed,
+			String linkType) {
+		super();
+		this.id = id;
+		this.url = url;
+		this.user = user;
+		this.displayed = displayed;
+		this.linkType = linkType;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	//Setters and getters.
 		public String getLinkType() {		return linkType;	}
+
 		public void setLinkType(String linkType) {		this.linkType = linkType;	}
 		public int getId() {		return id;	}
 		public void setId(int id) {		this.id = id;	}
