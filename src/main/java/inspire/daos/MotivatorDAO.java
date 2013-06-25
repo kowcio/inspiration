@@ -5,6 +5,8 @@ import inspire.entities.Motivator;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 
 
 public class MotivatorDAO {
@@ -20,11 +22,8 @@ public class MotivatorDAO {
 		HibGetDBSession fabrykaHibernejta = new HibGetDBSession();
 	   	try {
 	   		Session session = fabrykaHibernejta.getNewSessionAnnotations();
-	   		System.out.println("Wypisanie rzeczy w zwiazlku z embedded SessioNFactory pobranym z dispatchera");
-	   		System.out.println("");
 			System.out.println("Saving Record");
 			Transaction tx = session.beginTransaction();
-
 			//setting the date of adding the motivator
 			session.save(motivator);
 			tx.commit();
@@ -137,6 +136,148 @@ public class MotivatorDAO {
 
 
 	
+		/**
+		 * Get number of motivators in db
+		 * @param viewType
+		 * @return
+		 */
+		public int getPostsNumberInDB( ){
+			HibGetDBSession fabrykaHibernejta = new HibGetDBSession();
+			long pcl=0;
+		   	try {
+				Session session = fabrykaHibernejta.getNewSessionAnnotations();
+				//postCount 
+				 pcl =		 (Long) session.createCriteria(Motivator.class)
+							 .setProjection(Projections.rowCount()).uniqueResult();
+			return safeLongToInt(pcl);
+		   	} catch (Exception e) {
+				System.out.println("Exception error - PostDAO - getPostsNumberInDB");
+				 e.printStackTrace();
+			}
+		   	return 0;
+		}
+		
+		
+		
+		@SuppressWarnings("unchecked")
+		public List<Motivator> getDisplayedMotivators(){
+			HibGetDBSession fabrykaHibernejta = new HibGetDBSession();
+			List<Motivator> motList = null;
+		   	try {
+				Session session = fabrykaHibernejta.getNewSessionAnnotations();
+				Transaction tx = session.beginTransaction();
+				motList = (List<Motivator>)session
+						.createQuery("from Motivator where displayed = '1'").list();
+			   	System.out.println("motList count = "+motList.size());	
+				tx.commit();
+				return motList;
+		   	} catch (Exception e) {
+				System.out.println("Exception error - PostDAO - getAllNotepadPosts");
+				 e.printStackTrace();
+			}
+		   	return null;
+		}
+		
+		
+		@SuppressWarnings("unchecked")
+		public Motivator getDisplayedSpecifiedTypeMotivators(String linkType){
+			HibGetDBSession fabrykaHibernejta = new HibGetDBSession();
+			List<Motivator> postsList = null;
+		   	try {
+				Session session = fabrykaHibernejta.getNewSessionAnnotations();
+				Transaction tx = session.beginTransaction();
+				postsList = (List<Motivator>)session
+						.createQuery("from Motivator where linkType="+linkType+"and displayed = '1'").list();
+			   	System.out.println("PostsList count = "+postsList.size());	
+				tx.commit();
+				return postsList.get(0);
+		   	} catch (Exception e) {
+				System.out.println("Exception error - PostDAO - getAllNotepadPosts");
+				 e.printStackTrace();
+			}
+		   	return postsList.get(0);
+		}
+		
+		
+		
+		/**
+		 * return the number of posts with status display = 1 
+		 * @return int 
+		 */
+		public int getMotivatorsNumberInDBThatAreDisplayed(int display){
+			HibGetDBSession fabrykaHibernejta = new HibGetDBSession();
+		   	try {
+				Session session = fabrykaHibernejta.getNewSessionAnnotations();
+ 
+				int postCount = 
+						safeLongToInt(
+						 (Long) session.createCriteria(Motivator.class)
+						.add( Restrictions.eq("displayed", display ) )
+						.setProjection(Projections.rowCount()).uniqueResult()
+						);
+				return postCount;
+		   	} catch (Exception e) {
+				System.out.println("Exception error - PostDAO - getPostsNumberInDB");
+				 e.printStackTrace();
+			}
+		   	return 0;
+		}
+		
+		/**
+		 * return the number of posts with status display = 1 
+		 * @return int 
+		 */
+		public int getSpecifiedMotivatorsNumberInDBThatAreDisplayed(String linkType, int display){
+			HibGetDBSession fabrykaHibernejta = new HibGetDBSession();
+		   	try {
+				Session session = fabrykaHibernejta.getNewSessionAnnotations();
+ 
+				int postCount = 
+						safeLongToInt(
+						 (Long) session.createCriteria(Motivator.class)
+						.add( Restrictions.eq("displayed", display ) )
+						.add( Restrictions.eq("linkType", linkType ) )
+						.setProjection(Projections.rowCount()).uniqueResult()
+						);
+				return postCount;
+		   	} catch (Exception e) {
+				System.out.println("Exception error - PostDAO - getPostsNumberInDB");
+				 e.printStackTrace();
+			}
+		   	return 0;
+		}
+		////////////////////
+		////////////////////
+		// UTILS 
+		////////////////////
+		////////////////////
+		
+		
+		/**
+		 * Method for casting Long to INT
+		 * @param l long
+		 * @return int l
+		 */
+		public int safeLongToInt(long l) {
+		    if (l < Integer.MIN_VALUE || l > Integer.MAX_VALUE) {
+		        throw new IllegalArgumentException
+		            (l + " cannot be cast to int without changing its value.");
+		    }
+		    return (int) l;
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	
 	
 

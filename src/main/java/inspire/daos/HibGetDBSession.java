@@ -114,7 +114,6 @@ public class HibGetDBSession{
 		config.addAnnotatedClass(Motivator.class);
         config.configure(hibcfgxmlFile);
 		SchemaExport schema = new SchemaExport(config);
-        schema.setOutputFile("uiSchema.sql");//saved in eclipse main folder
         //schema.create(true, false);
         serviceRegistry = new ServiceRegistryBuilder().applySettings(config.getProperties()).buildServiceRegistry();        
         SessionFactory sessionFactory = config.buildSessionFactory(serviceRegistry);

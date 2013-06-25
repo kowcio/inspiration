@@ -43,7 +43,7 @@ public class DBConfig implements ServletContextListener {
 	        MotivatorDAO fdao = new MotivatorDAO();
 	        try {
 				postNo = (int) fdao.getAllMotivators().size();
-				System.out.println("postNumber = "+postNo);
+				System.out.println("motivtaor posts = "+postNo);
 				if (postNo == 0 ){						//if db is empty add initial posts
 					System.out.print("0 posts.");
         			saveInitialDBData(sf1);

@@ -14,23 +14,22 @@
 
 
 <head>
-
 <title> Inspiration ! Daily ! </title>
-    <!--  CSS  -->
-
 <link href="<c:url value="/resources/css/all.css"/>" rel="stylesheet" type="text/css" />
 
-    <!--  JS  -->
-    
 <script type="text/javascript" src="<c:url value="/resources/js/jquery.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/jqueryui.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/bootstrap.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/jquery.preload.js"/>"></script>
+
 <script type="text/javascript" src="<c:url value="/resources/js/skrypty.js"/>"></script>
-
-
 
   </head>
   <body id="body">
+  
+  <div id="wrapperForFooter">
+  
+<div id="pageContext" style="display:none">${path}</div>
 
 
 
@@ -43,35 +42,21 @@
 
 
 
-<div id="main ">
-
-main
+<div id="main" class="text-center">
 
 <!--  main frame for displaying the motivator -->
 
-<div id="mainFrame">
+<div id="mainFrame" class="mainFrame text-center">
 
-mainFrame
-
-            <iframe title="YouTube video player" 
-            class="youtube-player" 
-            type="text/html" 
-            height="500"
-            width="600" 
-            src="http://www.youtube.com/embed/U0lsNP8vAXU" frameborder="0">
-            </iframe>                  
 
 </div>
 
 
 <!--  Button for getting the new motivator -->
-
-<div id="getNextMotivator" class="text-center">
-
-
+<br />
  <button 
  id="getNextMotivatorBtn"
- class="btn btn-large btn-primary" 
+ class="btn btn-large btn-primary getNextMotivatorBtn" 
  type="button">
  Inspire !</button>
 </div>
@@ -79,11 +64,8 @@ mainFrame
 
 
 
+
 </div>
-
-
-
-
 
 
 

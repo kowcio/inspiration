@@ -28,7 +28,6 @@
     <!-- 
     I have had issues before with tomcat not serving static content with a /* servlet mapping. 
     The way I solved it was to explicitly map each content type in web.xml, including .css files, like so: 
-    
     Mapping other files then *.jsp
     -->
     <servlet-mapping>
@@ -45,6 +44,16 @@
     <servlet-mapping>
   <servlet-name>default</servlet-name>
   <url-pattern>*.jpg</url-pattern>  
+</servlet-mapping>
+
+    <servlet-mapping>
+  <servlet-name>default</servlet-name>
+  <url-pattern>*.gif</url-pattern>  
+</servlet-mapping>
+
+<servlet-mapping>
+  <servlet-name>default</servlet-name>
+  <url-pattern>*.png</url-pattern>  
 </servlet-mapping>
 
 <!--  turned off for efficient error reading
@@ -73,6 +82,29 @@
         /WEB-INF/spring-security.xml
  -->        
 </context-param>
+
+
+<context-param>
+    <param-name>db.url</param-name>
+<!--     
+Add option for creating database ;INIT=create schema if not exists test\;runscript from 'classpath:sql/db-schema.sql';DB_CLOSE_DELAY=-1</param-value>
+ -->
+<param-value>jdbc:h2:blogdb;AUTO_SERVER=TRUE;MVCC=TRUE;DB_CLOSE_DELAY=-1;IFEXISTS=FALSE</param-value>
+</context-param>
+<context-param>
+    <param-name>db.user</param-name>
+    <param-value>sa</param-value>
+</context-param>
+<context-param>
+    <param-name>db.password</param-name>
+    <param-value></param-value>
+</context-param>
+ <listener>
+    <listener-class>org.h2.server.web.DbStarter</listener-class>
+</listener>
+
+
+
 
 <!--  CONTEXT LOADER LISTENER -->
 

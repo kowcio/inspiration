@@ -36,7 +36,7 @@ public class Motivator {
 	public Motivator() {
 		this.url = 		"url";
 		this.user =		"user"; 
-		this.displayed = 1;
+		this.displayed = 0;
 		this.linkType = "linkType";
 	}
 	
@@ -78,7 +78,16 @@ public class Motivator {
 	
 	
 	
-	//Setters and getters.
+	@Override
+	public String toString() {
+		return "Motivator [id=" + id + ", url=" + url + ", user=" + user
+				+ ", displayed=" + displayed + ", linkType=" + linkType + "]";
+	}
+
+
+
+
+		//Setters and getters.
 		public String getLinkType() {		return linkType;	}
 
 		public void setLinkType(String linkType) {		this.linkType = linkType;	}

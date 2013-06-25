@@ -10,7 +10,7 @@
         
     
         <property name="hibernate.connection.driver_class">org.h2.Driver</property>
-        <property name="hibernate.connection.url">jdbc:h2:uidb;AUTO_SERVER=TRUE;MVCC=TRUE;IFEXISTS=TRUE</property>
+        <property name="hibernate.connection.url">jdbc:h2:uidb;AUTO_SERVER=TRUE;MVCC=TRUE;IFEXISTS=false</property>
         <property name="hibernate.connection.username">sa</property>
         <property name="hibernate.connection.password"></property>
         <property name="hibernate.dialect">org.hibernate.dialect.H2Dialect</property>

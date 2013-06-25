@@ -1,98 +1,144 @@
-function checkMe() {
-	if (confirm("Are you sure")) 
-	{
-		
-		alert("Clicked Ok");
-		return true;
-	} 
-	else {
-		alert("Clicked Cancel");
-		return false;
-	}
+
+$(document).ready(function(){
+	
+	//make a random grow appear on load
+	loadRandomMotivator();
+
+	
+	});	
+
+
+$(document).on("click", ".getNextMotivatorBtn", loadRandomMotivator ); 
+
+
+ function loadRandomMotivator() {
+	 //  $(".displayusers").load("${path}/users/part/"+postNo);
+		var timeout = 1000;
+
+	  var url = $("#pageContext").text()+"/getMotivator";
+	$.getJSON(  url , function(data) {
+        //console.log("data.url = "+data.url+" \n pageContext in div is = "+$("#pageContext").text());
+		//$.each(data, function(key, val) {
+		////console.log("key = "+key+" value= "+val);
+	    //load values to the divs
+		//});
+		//console.log("linkType = "+data.linkType);
+		var type = data.linkType;
+        $(".mainFrame").fadeOut( timeout , function() {
+        
+        //console.log("nie skonczylo sie fejdowac");
+		 if ( type == "yt"){
+	            var media = 
+	            '<iframe title="YouTube video player" class="youtube-player" type="text/html" width="640"'+
+	            'height="390" src="http://www.youtube.com/embed/'+data.url+'" frameborder="0">'+
+	            '</iframe>';
+	             $(".mainFrame").html(  media  );
+	            //console.log("YT setting");
+		 }
+	        else if ( type=="img"){    
+	            var media = '<img src="'+ data.url +'" alt="Smiley face" height="390" width="640">';
+	            $(".mainFrame").html(  media  );
+                //console.log("IMG setting");
+	        }
+	        else if ( type=="quote"){
+	        	   var media = '<div id="qouteBackground" style="max-height:640px; max-width:390px">'+
+	        		   data.url+'</div>';
+	        	   $(".mainFrame").html(  media  );
+	        	   //console.log("QUOTE setting");
+	        }
+	        else {
+	                $(".mainFrame").replaceWith( "That should have not happened, admin will go crazy");
+	        }
+		 //end fade out function        
+        });		 
+		 
+		 
+         $(".mainFrame").fadeIn(  timeout  );
+        
+	});
+}
+
+/////////////////////////////////////
+/////////////////////////////////////
+//		TEST
+/////////////////////////////////////
+/////////////////////////////////////
+
+
+
+ function testMotiv(type) {
+     $(".mainFrame").fadeOut( 2000 , function() {
+
+		if ( type == "yt"){
+	            var media = 
+	            '<iframe title="YouTube video player" class="youtube-player" type="text/html" width="640"'+
+	            'height="390" src="http://www.youtube.com/embed/EuJak7Do-rk" frameborder="0">'+
+	            '</iframe>';
+	             $(".mainFrame").html(  media  );
+	            //console.log("YT setting");
+		 }
+	        else if ( type=="img"){    
+	            var media = '<img src="http://uniquelifeguide.com/wp-content/uploads/inspire.jpg" alt="Smiley face" height="390" width="640">';
+	            $(".mainFrame").html(  media  );
+             //console.log("IMG setting");
+	        }
+	        else if ( type=="quote"){
+	        	   var media = '<div id="qouteBackground"' + 
+	        		   'style="max-height:640px; max-width:390px">123456789</div>';
+	        	   $(".mainFrame").html(  media  );
+	        	   //console.log("QUOTE setting");
+	        }
+	        else {
+	                $(".mainFrame").replaceWith( "That should have not happened, admin will go crazy");
+	        }
+		 //end fade out function        
+     });		 
+		 		 
+      $(".mainFrame").fadeIn(  2000  );
+	        
 }
 
 
 
+ 
+ 
 
+/////////////////////////////////////
+/////////////////////////////////////
+//			Add motiv
+/////////////////////////////////////
+/////////////////////////////////////
 
-// FOR CHANGING THE GROW HELP 
-
-$(document).ready(function(){
-	  $('.helpBtn').popover({ 
-	    html : true,
-	    content: function() {
-	    	var  va = $('.item.active').find('.container').attr('id');
-	    	if (va == "G"){	        return $('.goal_help').html();        	}
-	    	if (va == "R"){	        return $('.reality_help').html();    	}
-	    	if (va == "O"){	        return $('.options_help').html();    	}
-	    	if (va == "W"){	    	return $('.will_help').html();	    	}
-	    },
-	    title : function() {
-	    	var  va = $('.item.active').find('.container').attr('id');
-	    	if (va == "G"){	        return $('#goal_help_title').html();        	}
-	    	if (va == "R"){	        return $('#reality_help_title').html();    	}
-	    	if (va == "O"){	        return $('#options_help_title').html();    	}
-	    	if (va == "W"){	    	return $('#will_help_title').html();	    	}
-	    },
-	    	    
-template: '<div id="popHelp" class="popover popHelp">'+
-'<div class="popover-inner myclass">'+
-'<h3 class="popover-title"></h3>'+
-'<div class="popover-content"><p></p></div></div></div>'
-
-	  
-	  });	});	
-
-
-
-//FOR CHANGING THE GROW HELP 
-
-$(document).ready(function(){
-	  $('.growDescBtn').popover({ 
-	    html : true,
-	    content: function() {
-    	return $('.grow_desc').html();	    	
-	    },
-	    title : "Tytul z js",  
-template: '<div id="popHelp" class="popover popHelp">'+
-'<div class="popover-inner myclass">'+
-'<h3 class="popover-title"></h3>'+
-'<div class="popover-content"><p></p></div></div></div>'
-
-	  
-	  });	});	
-
-
-// FOR THE HELP BUTTON ON THE MAIN SIDE FOR EVERYBODY
-
-//FOR CHANGING THE GROW HELP 
-
-$(document).ready(function(){
-	  $('.helpBtnMain').popover({ 
-	    html : true,
-	    content: function() {
-	    	var  va = $('.item.active').find('.container').attr('id');
-	    	if (va == "G"){	        return $('.goal_help').html();        	}
-	    	if (va == "R"){	        return $('.reality_help').html();    	}
-	    	if (va == "O"){	        return $('.options_help').html();    	}
-	    	if (va == "W"){	    	return $('.will_help').html();	    	}
-	    },
-	    title : function() {
-	    	var  va = $('.item.active').find('.container').attr('id');
-	    	if (va == "G"){	        return $('#goal_help_title').html();        	}
-	    	if (va == "R"){	        return $('#reality_help_title').html();    	}
-	    	if (va == "O"){	        return $('#options_help_title').html();    	}
-	    	if (va == "W"){	    	return $('#will_help_title').html();	    	}
-	    },
-	    	    
-template: '<div id="popHelpMain" class="popover popHelpMain">'+
-'<div class="popover-inner myclass">'+
-'<h3 class="popover-title"></h3>'+
-'<div class="popover-content"><p></p></div></div></div>'
-
-	  
-	  });	});	
-
+ 
+ $(document).on('click', '#addMotiv', function(){
+ 
+		var url = $('#addUrlInput').val();
+		console.log(url);
+		urlWithNoSlashes = url.replace( /\//g , 'hereIsSlash');
+		console.log(urlWithNoSlashes);
+		//OK
+		
+		var jsonfile={json:JSON.stringify(urlWithNoSlashes)};
+		
+ $.ajax({
+ 	type: "POST",
+ 	data: jsonfile,
+    dataType : "json",
+ 	url: $("#pageContext").text()+"/addUrl/11",
+ 	success: function(){
+ 	    $('#myModal').modal('hide');
+ 		//add a green mark
+ 	}
+ 	});
+ 
+ 
+ 
+ 
+ 
+ });
+ 
+ 
+ 
 
 
 
