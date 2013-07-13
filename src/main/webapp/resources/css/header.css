@@ -3,10 +3,11 @@
 position:relative;
 top:0%;
 height:60px;
-border:1px solid black;
 }
 
-
+ .btn-header{
+ margin:1%;
+ }
 
 .navbar-fixed-top{
 	

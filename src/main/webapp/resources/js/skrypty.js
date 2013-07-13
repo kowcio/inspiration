@@ -125,17 +125,19 @@ $(document).on("click", ".getNextMotivatorBtn", loadRandomMotivator );
  	data: jsonfile,
     dataType : "json",
  	url: $("#pageContext").text()+"/addUrl/11",
- 	success: function(){
+ 	success: function(){	//if i won`t return true boolean response body in spring it always will fail ... wtf ? 
+ 		console.log("success");
  	    $('#myModal').modal('hide');
  		//add a green mark
- 	}
+ 	},
+ 	error: function(){ console.log("errro sennding ajax ? "); }
  	});
  
  
  
  
  
- });
+ }); //end #addMotiv
  
  
  

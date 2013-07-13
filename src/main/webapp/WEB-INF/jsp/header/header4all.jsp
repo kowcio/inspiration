@@ -8,15 +8,16 @@
  
             
             <div id="greeting" class="brand">
-
+<!-- 
  <button class="btn btn-large btn-primary" type="button" onclick="testMotiv('yt')">Test YT</button> 
  <button class="btn btn-large btn-primary" type="button" onclick="testMotiv('img')">Test Img</button>
  <button class="btn btn-large btn-primary" type="button" onclick="testMotiv('quote')">Test Img</button>
+ -->
 
-
+      <button class="btn btn-info pull-right btn-header" type="button" id="changeBgBtn">Change BG</button>
 
     <!-- Button to trigger modal -->
-    <a href="#myModal" class="btn" data-toggle="modal">Launch demo modal</a>
+    <a href="#myModal" class="btn btn-info pull-right btn-header" data-toggle="modal">Add motiv</a>
      
     <!-- Modal -->
     <div id="myModal" class="modal hide fade" tabindex="-1">
@@ -37,24 +38,18 @@
             
             
             
-            
-            
-            
-            
-             <button class="btn btn-large btn-primary" type="button" id="changeBgBtn">Change BG</button>
             <script>
-            
-            var bgCount = 1;
-            
-            $("#changeBgBtn").click(
+              var bgCount=0;	
+       
+              $("#changeBgBtn").click(
 			    function(){
-			    	bgCount++;
+			    	console.log( bgCount++ ) ;
 			    	
-			    	if      (bgCount%4){     $('body').css('background-image',"url('../grow/resources/img/bg1.jpg')");    }
-			    	else if (bgCount%3){     $('body').css('background-image',"url('../grow/resources/img/bg2.jpg')");    }
-			    	else if (bgCount%2){     $('body').css('background-image',"url('../grow/resources/img/bg3.jpg')");    }
-			    	else if (bgCount%1){     $('body').css('background-image',"url('../grow/resources/img/bg4.jpg')");    }
-			    	else               {     $('body').css('background-image',"url('../grow/resources/img/bg5.jpg')");    }
+			    	if      (bgCount%4==0){console.log(bgCount);     $('body').css('background-image',"url('../grow/resources/img/bg1.jpg')");    }
+			    	else if (bgCount%3==0){console.log(bgCount);     $('body').css('background-image',"url('../grow/resources/img/bg2.jpg')");    }
+			    	else if (bgCount%2==0){console.log(bgCount);     $('body').css('background-image',"url('../grow/resources/img/bg3.jpg')");    }
+			    	else if (bgCount%1==0){console.log(bgCount);     $('body').css('background-image',"url('../grow/resources/img/bg4.jpg')");    }
+			    	else               {console.log(bgCount);     $('body').css('background-image',"url('../grow/resources/img/bg5.jpg')");    }
 			    });
              
             </script> 

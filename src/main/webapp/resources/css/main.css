@@ -1,8 +1,9 @@
 html,body{      
 	height: 100%;
 	width:100%;
-	  background: url('../img/bg1.jpg') no-repeat center center fixed ; 
+	  background: url('../img/bg1.jpg') no-repeat center center  ; 
 	  background-size: 100% 100%;
+	  
 
 }
 
@@ -20,7 +21,7 @@ html,body{
 
 #mainFrame{
 	position:relative;
-	border:1px solid black;
+	margin-top:4%;
 	/* for the fixed space on the start */
 	display:none;
 	min-height:390px!important;
@@ -50,14 +51,12 @@ html,body{
     width:500px;
     height:10%;
     margin-top:2%;
-    border:1px solid black;
 }
 
 
 
 #footer{
   height: 60px;
-  border:1px solid black;
 }
 
 
