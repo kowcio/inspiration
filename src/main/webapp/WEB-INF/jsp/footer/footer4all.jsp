@@ -12,8 +12,9 @@
       <div class="container">
         <p class="muted credit">
         
-       Thrive ! by PK.
+       Thrive ! by PK.  <br />
+       <a href="http://all-free-download.com/free-vector/">BG by all-free-download.</a>
          
-         </a>.</p>
+       </p>
       </div>
     

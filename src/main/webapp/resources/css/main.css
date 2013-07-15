@@ -3,7 +3,6 @@ html,body{
 	width:100%;
 	  background: url('../img/bg1.jpg') no-repeat center center  ; 
 	  background-size: 100% 100%;
-	  
 
 }
 
@@ -29,24 +28,26 @@ html,body{
 	        
 }
 #qouteBackground{
-	font-size:50px;
-	line-height:70px;
+	font-size:40px;
+	line-height:50px;
+	padding:2%;
 	color:white;
+	font-style:bolder;
 	background:navy;
 	border-radius:25px 25px 25px 25px ;
-	        
     margin-left: auto ;
     margin-right: auto ;
 }
 
 #mainFrame img{
     border-radius:25px 25px 25px 25px ;
+    min-height:390px!important;
+    max-height:390px;
 }
 
 
 #getNextMotivator{
 	position:relative;
-	
     left:20%;
     width:500px;
     height:10%;

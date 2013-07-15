@@ -8,14 +8,14 @@
     <session-factory>
     
     
-     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.url">jdbc:mysql://127.12.206.2:3306/grow</property>
         <property name="hibernate.connection.username">adminGPQW5ua</property>
         <property name="hibernate.connection.password">yb6mpDf7K6e7</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        
-       
-        
+    
+    
         
         
         <property name="hibernate.transaction.auto_close_session">true</property>        

@@ -46,10 +46,7 @@
 
 <!--  main frame for displaying the motivator -->
 
-<div id="mainFrame" class="mainFrame text-center">
-
-
-</div>
+<div id="mainFrame" class="mainFrame text-center"></div>
 
 
 <!--  Button for getting the new motivator -->

@@ -36,13 +36,17 @@ $(document).on("click", ".getNextMotivatorBtn", loadRandomMotivator );
 	            //console.log("YT setting");
 		 }
 	        else if ( type=="img"){    
-	            var media = '<img src="'+ data.url +'" alt="Smiley face" height="390" width="640">';
+var media = 
+'<a href="'+ data.url +'"><img src="'+ data.url +'" alt="Smiley face" height="390" width="640" /></a>';
+	            console.log(media);
 	            $(".mainFrame").html(  media  );
                 //console.log("IMG setting");
 	        }
 	        else if ( type=="quote"){
-	        	   var media = '<div id="qouteBackground" style="max-height:640px; max-width:390px">'+
-	        		   data.url+'</div>';
+	        	   var media = 
+	        		   '<div id="qouteBackground" style="max-height:640px; max-width:390px">'
+	        		   +data.url+
+	        		   '</div>';
 	        	   $(".mainFrame").html(  media  );
 	        	   //console.log("QUOTE setting");
 	        }
@@ -60,7 +64,7 @@ $(document).on("click", ".getNextMotivatorBtn", loadRandomMotivator );
 
 /////////////////////////////////////
 /////////////////////////////////////
-//		TEST
+//		TEST						
 /////////////////////////////////////
 /////////////////////////////////////
 
@@ -100,22 +104,37 @@ $(document).on("click", ".getNextMotivatorBtn", loadRandomMotivator );
 
 
 
- 
- 
-
 /////////////////////////////////////
 /////////////////////////////////////
 //			Add motiv
 /////////////////////////////////////
 /////////////////////////////////////
-
  
+ //add motiv modal popup button
+ $(document).on('click', '#showAddMotivModal', function(){
+	 	$("#addedErrorAlert").hide('slow');
+		$("#addedSuccesAlert").hide('slow');
+		$('#myModal').modal('toggle'); 
+ });
+ //add motiv on the modal buton
  $(document).on('click', '#addMotiv', function(){
- 
+	 	$("#addedErrorAlert").hide('slow');
+		$("#addedSuccesAlert").hide('slow');
+
+		
 		var url = $('#addUrlInput').val();
 		console.log(url);
 		urlWithNoSlashes = url.replace( /\//g , 'hereIsSlash');
 		console.log(urlWithNoSlashes);
+		
+		//validation
+		if (url.length<5) {
+			console.log("Url to short");
+			 $("#addedErrorAlert").fadeIn('slow', function(){
+		       });
+			 return false;
+			}
+
 		//OK
 		
 		var jsonfile={json:JSON.stringify(urlWithNoSlashes)};
@@ -127,10 +146,14 @@ $(document).on("click", ".getNextMotivatorBtn", loadRandomMotivator );
  	url: $("#pageContext").text()+"/addUrl/11",
  	success: function(){	//if i won`t return true boolean response body in spring it always will fail ... wtf ? 
  		console.log("success");
- 	    $('#myModal').modal('hide');
+       $("#addedSuccesAlert").fadeIn('slow', function(){
+    	   $('#myModal').modal('hide');
+   	 		$('#addUrlInput').val("");
+
+       });
  		//add a green mark
  	},
- 	error: function(){ console.log("errro sennding ajax ? "); }
+ 	error: function(){ console.log("erroe sennding ajax ? "); }
  	});
  
  
